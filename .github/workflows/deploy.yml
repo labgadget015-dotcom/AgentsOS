@@ -1,0 +1,25 @@
+name: Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: false
+        default: 'production'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy notification
+        run: |
+          echo "Deployment triggered via n8n workflow"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+
+      - name: Trigger Vercel deployment
+        run: |
+          echo "Deployment process would execute here"
+          echo "Current deployments: Vercel handles automatic deployments"
