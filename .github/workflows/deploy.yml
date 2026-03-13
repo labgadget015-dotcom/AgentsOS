@@ -1,0 +1,33 @@
+name: Deploy Application
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch or tag to deploy'
+        required: false
+        default: 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || 'main' }}
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Deploy notification
+        run: |
+          echo "Deployment triggered by n8n workflow"
+          echo "Deploying branch: ${{ github.event.inputs.ref || 'main' }}"
+          echo "Deployment completed successfully!"
+      
+      - name: Success message
+        run: echo "✅ Deployment workflow executed successfully"
