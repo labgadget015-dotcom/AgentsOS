@@ -5,7 +5,11 @@ on:
       environment:
         description: 'Deployment environment'
         required: false
+        type: choice
         default: 'production'
+        options:
+          - 'production'
+          - 'staging'
 
 jobs:
   deploy:
