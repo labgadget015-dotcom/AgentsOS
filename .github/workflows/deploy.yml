@@ -19,7 +19,7 @@ jobs:
           echo "Deployment triggered via n8n workflow"
           echo "Environment: ${{ github.event.inputs.environment }}"
 
-      - name: Trigger Vercel deployment
+      - name: Document Vercel deployment behavior
         run: |
-          echo "Deployment process would execute here"
-          echo "Current deployments: Vercel handles automatic deployments"
+          echo "No manual Vercel deployment is triggered in this workflow step."
+          echo "Note: Vercel deployments are handled automatically (e.g., on push to the configured branch)."
